@@ -1,0 +1,11 @@
+{
+  "name": "dsa-instant-sales-training",
+  "version": "1.0.0",
+  "description": "DSA 即席銷售訓練 PWA - 職業+物品百科 & 抽卡練習",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": ["dsa", "training", "sales"],
+  "author": "Deku"
+}
