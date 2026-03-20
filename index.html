@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f172a">
+<title>DSA 即席銷售訓練</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<div id="app">
+  <!-- Nav -->
+  <nav id="nav">
+    <button class="nav-btn active" data-tab="encyclopedia">📚 百科</button>
+    <button class="nav-btn" data-tab="training">🎯 訓練</button>
+    <button class="nav-btn" data-tab="history">📊 記錄</button>
+  </nav>
+
+  <!-- Tab: Encyclopedia -->
+  <section id="tab-encyclopedia" class="tab active">
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="搜尋職業或物品...">
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="job">👤 職業 <span id="job-count"></span></button>
+        <button class="filter-btn" data-filter="item">📦 物品 <span id="item-count"></span></button>
+      </div>
+    </div>
+    <div id="encyclopedia-list" class="card-list"></div>
+  </section>
+
+  <!-- Tab: Training -->
+  <section id="tab-training" class="tab">
+    <div id="training-start" class="training-state">
+      <div class="training-hero">
+        <div class="hero-icon">🎯</div>
+        <h2>即席銷售訓練</h2>
+        <p>隨機抽取職業+物品組合<br>限時 2 分鐘完成銷售演講</p>
+        <button id="btn-draw" class="btn-primary btn-lg">🃏 抽卡開始</button>
+      </div>
+      <div class="stats-row">
+        <div class="stat"><span id="stat-total">0</span><small>總訓練次數</small></div>
+        <div class="stat"><span id="stat-today">0</span><small>今日</small></div>
+        <div class="stat"><span id="stat-combos">0</span><small>可能組合</small></div>
+      </div>
+    </div>
+
+    <div id="training-active" class="training-state" style="display:none">
+      <div class="draw-card">
+        <div class="card-label">職業</div>
+        <div id="draw-job" class="card-value">—</div>
+      </div>
+      <div class="draw-card">
+        <div class="card-label">物品</div>
+        <div id="draw-item" class="card-value">—</div>
+      </div>
+      <div id="timer-display" class="timer">2:30</div>
+      <div class="timer-bar-container">
+        <div id="timer-bar" class="timer-bar"></div>
+      </div>
+      <div class="training-actions">
+        <button id="btn-done" class="btn-primary">✅ 完成</button>
+        <button id="btn-skip" class="btn-secondary">⏭️ 跳過</button>
+      </div>
+    </div>
+
+    <div id="training-result" class="training-state" style="display:none">
+      <div id="result-content"></div>
+      <div class="training-actions">
+        <button id="btn-again" class="btn-primary">🔄 再來一題</button>
+        <button id="btn-back" class="btn-secondary">← 返回</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tab: History -->
+  <section id="tab-history" class="tab">
+    <div id="history-empty" class="empty-state">
+      <div class="hero-icon">📊</div>
+      <p>還沒有訓練記錄</p>
+    </div>
+    <div id="history-list" class="card-list"></div>
+    <button id="btn-clear-history" class="btn-danger" style="display:none">🗑️ 清除記錄</button>
+  </section>
+</div>
+
+<!-- Detail Modal -->
+<div id="modal" class="modal" style="display:none">
+  <div class="modal-content">
+    <button id="modal-close" class="modal-close">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
